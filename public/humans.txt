@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    RedbackThomson -- Lead Developer -- github.com/RedbackThomson
+
+# THANKS
+
+    peppy
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    jQuery, Modernizr

@@ -1,0 +1,33 @@
+{
+    // This is your PostgreSQL Database configuration
+    db: {
+        name: "osucelebrity",
+        password: "admin",
+        username: "postgres",
+        host: "localhost",
+        port: 5432
+    },
+    app: {
+        name: "OsuCelebrity-web"
+    },
+    // You will need to get your own client id's before this will work properly
+    facebook: {
+        clientID: "<CLIENT ID>",
+        clientSecret: "<CLIENT SECRET>",
+        callbackURL: "http://localhost:3000/auth/facebook/callback"
+    },
+    twitter: {
+        clientID: "<CLIENT ID>",
+        clientSecret: "<CLIENT SECRET>",
+        callbackURL: "http://localhost:3000/auth/twitter/callback"
+    },
+    google: {
+        realm: "http://localhost:3000/",
+        callbackURL: "http://localhost:3000/auth/google/callback"
+    },
+    twitch: {
+        clientID: "g7bzpqop7kpo8de2w97ean956xmjvj2",
+        clientSecret: "pt0rlpz6ucz615malm0by4xupwcmbgx",
+        callbackURL: "http://localhost:3000/auth/twitch/callback"
+    }
+}
