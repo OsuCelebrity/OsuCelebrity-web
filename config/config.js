@@ -29,7 +29,7 @@ var computedConfig = {
 nconf.argv()
     .env()
     .defaults({store:{
-            NODE_ENV:'development'
+      NODE_ENV:'development'
     }});
 var envConfigPath = rootPath + '/config/env/'+nconf.get('NODE_ENV')+'.json5';
 nconf.file(nconf.get('NODE_ENV'),{ file: envConfigPath, type:'file', format:json5 })

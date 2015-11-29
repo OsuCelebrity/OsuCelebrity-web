@@ -1,4 +1,4 @@
-angular.module('mean', ['ngCookies', 'ngResource', 'ngRoute', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.articles']);
+angular.module('osucelebrity', ['ngCookies', 'ngResource', 'ngRoute', 'ui.bootstrap', 'ui.route', 'osucelebrity.system', 'osucelebrity.articles']);
 
-angular.module('mean.system', []);
-angular.module('mean.articles', []);
+angular.module('osucelebrity.system', []);
+angular.module('osucelebrity.articles', []);

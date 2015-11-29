@@ -2,8 +2,8 @@
     // This is your PostgreSQL Database configuration
     db: {
         name: "osucelebrity",
-        password: "admin",
-        username: "postgres",
+        password: "vagrant",
+        username: "vagrant",
         host: "localhost",
         port: 5432
     },

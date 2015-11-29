@@ -14,7 +14,7 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-    db.User.find({where: {id: id}}).then(function(user){
+    db.TwitchUser.find({where: {id: id}}).then(function(user){
         if(!user){
             winston.warn('Logged in user not in database, user possibly deleted post-login');
             return done(null, false);
@@ -35,12 +35,13 @@ passport.use(new TwitchStrategy({
     },
     function(accessToken, refreshToken, profile, done) {
 
-    db.User.find({where: {twitchUserId: profile.id}}).then(function(user) {
+    db.TwitchUser.find({where: {id: profile.id}}).then(function(user) {
+        winston.debug(profile);
         if(!user){
-            db.User.create({
+            db.TwitchUser.create({
+                id: profile.id,
                 name: profile.displayName,
-                username: profile.displayName.replace(/ /g, ''),
-                twitchUserId: profile.id,
+                username: profile.username,
             }).then(function(u) {
                 winston.info('New User (twitch) : { id: ' + u.id + ', username: ' + u.username + ' }');
                 done(null, u);
@@ -50,6 +51,7 @@ passport.use(new TwitchStrategy({
             done(null, user);
         }
     }).catch(function(err){
+        winston.debug(err);
         done(err, null);
     });
 }));

@@ -9,7 +9,8 @@ module.exports = function(sequelize) {
     resave: true,
     saveUninitialized: true,
     store: new SequelizeStore({
-      db: sequelize
+      db: sequelize,
+      table: 'Session'
     }),
     cookie:{maxAge:1000*3600*24*7}, //remember for 7 days
     secret: config.expressSessionSecret/*||'$uper$ecret$e$$ionKey'*/

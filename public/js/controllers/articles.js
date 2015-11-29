@@ -1,4 +1,5 @@
-angular.module('mean.articles').controller('ArticlesController', ['$scope', '$routeParams', '$location', 'Global', 'Articles', function ($scope, $routeParams, $location, Global, Articles) {
+angular.module('osucelebrity.articles').controller('ArticlesController', ['$scope', '$routeParams', '$location', 'Global', 'Articles', 
+    function ($scope, $routeParams, $location, Global, Articles) {
     $scope.global = Global;
 
     $scope.create = function() {

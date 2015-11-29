@@ -22,7 +22,7 @@ if(process.env.DATABASE_URL) {
       protocol: 'postgres',
       port:     match[4],
       host:     match[3],
-      logging:  true //false
+      logging:  config.enableSequelizeLog === 'true' ? winston.verbose : false
     });
 } else {
     sequelize = new Sequelize(config.db.name, config.db.username, config.db.password, {
