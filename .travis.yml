@@ -4,6 +4,10 @@ node_js:
 env:
   - NODE_ENV=travis
 before_script:
-  - psql -c 'create database osucelebrity;' -U postgres 
+  - psql -c 'create database osucelebrity;' -U postgres
+  - npm install -g bower
+  - npm install -g grunt
+  - bower install
+  - grunt test   
 services:
   - postgresql
