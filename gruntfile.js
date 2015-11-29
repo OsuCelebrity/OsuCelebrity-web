@@ -88,8 +88,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-copy');
 
-    //Making grunt default to force in order not to break the project.
-    grunt.option('force', true);
+    grunt.option('force', false);
 
     //Default task(s).
     grunt.registerTask('default', ['jshint', 'concurrent']);
