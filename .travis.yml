@@ -3,5 +3,7 @@ node_js:
   - "0.10"
 env:
   - NODE_ENV=travis
+before_script:
+  - psql -c 'create database osucelebrity;' -U postgres 
 services:
-  - mongodb
+  - postgresql

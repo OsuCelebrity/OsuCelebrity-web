@@ -1,0 +1,18 @@
+{
+    PORT: 3001,
+    db: {
+        name: "osucelebrity",
+        password: "",
+        username: "postgres",
+        host: "localhost",
+        port: 5432
+    },
+    app: {
+        name: "OsuCelebrity-web Travis"
+    },
+    twitch: {
+        clientID: "<CLIENT ID>",
+        clientSecret: "<CLIENT SECRET>",
+        callbackURL: "<CALLBACK URL>"
+    }
+}
