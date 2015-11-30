@@ -19,7 +19,6 @@ module.exports = function(sequelize, DataTypes) {
 			stoppingAt: {type: DataTypes.BIGINT, field: 'STOPPINGAT'},
 			lastRemainingTimeUpdate: {type: DataTypes.BIGINT, field: 'LASTREMAININGTIMEUPDATE', defaultValue: 0},
 			boost: {type: DataTypes.INTEGER, field: 'BOOST', defaultValue: 0}
-
 		},
 		{
 			freezeTableName: true,

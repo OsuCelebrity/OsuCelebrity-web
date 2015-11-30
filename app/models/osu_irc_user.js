@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
 		{
 			ircName: {type: DataTypes.STRING, field: "IRCNAME", primaryKey: true},
 			resolved: {type: DataTypes.BIGINT, field: "RESOLVED"},
-			userUserIdOld: {type: DataTypes.INTEGER, field: "USER_USERID_OLD"}
+			userUserIdOid: {type: DataTypes.INTEGER, field: "USER_USERID_OID"}
 		},
 		{
 			freezeTableName: true,

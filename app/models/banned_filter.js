@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
 	var BannedFilter = sequelize.define('BannedFilter', 
 		{
 			id: {type: DataTypes.BIGINT, field: "ID", primaryKey: true},
-			startswith: {type: DataTypes.STRING, field: "STARTSWITH"}
+			startsWith: {type: DataTypes.STRING, field: "STARTSWITH"}
 		},
 		{
 			freezeTableName: true,
