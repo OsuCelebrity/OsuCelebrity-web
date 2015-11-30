@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
 				}
 			},
 			associate: function(models) {
-				Vote.belongsTo(models.QueuedPlayer, {as: 'QueuedPlayer', foreignKey: 'VOTE_FK1', targetKey: 'id'})
+				Vote.belongsTo(models.QueuedPlayer, {as: 'QueuedPlayer', foreignKey: 'VOTE_FK1', targetKey: 'id'});
 			}
 		}
 	);

@@ -1,3 +1,5 @@
+'use strict';
+
 //Global service for global variables
 angular.module('osucelebrity.system').factory("Global", [
     function() {

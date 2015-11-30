@@ -29,13 +29,6 @@ exports.session = function(req, res) {
 };
 
 /**
- * Send User
- */
-exports.me = function(req, res) {
-    res.jsonp(req.user || null);
-};
-
-/**
  * Find user by id
  */
 exports.user = function(req, res, next, id) {
