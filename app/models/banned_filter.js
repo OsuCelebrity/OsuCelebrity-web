@@ -16,6 +16,7 @@ module.exports = function(sequelize, DataTypes) {
 		{
 			freezeTableName: true,
 			tableName: 'BANNEDFILTER',
+			timestamps: false,
 			instanceMethods: {
 				toJSON: function () {
 					return this.get();

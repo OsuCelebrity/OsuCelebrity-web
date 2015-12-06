@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('osucelebrity', ['ngCookies', 'ngResource', 'ngRoute', 'ui.bootstrap', 'ui.route', 'osucelebrity.system', 'osucelebrity.articles']);
+angular.module('osucelebrity', ['ngCookies', 'ngResource', 'ui.router', 'ui.bootstrap', 'lodash', 'osucelebrity.config', 'osucelebrity.system', 'osucelebrity.current']);
 
 angular.module('osucelebrity.system', []);
-angular.module('osucelebrity.articles', []);
+angular.module('osucelebrity.current', []);

@@ -15,9 +15,11 @@
   "scripts": {
     "start": "node node_modules/grunt-cli/bin/grunt",
     "test": "node node_modules/grunt-cli/bin/grunt test",
+    "build": "node node_modules/grunt-cli/bin/grunt build",
     "postinstall": "bower install"
   },
   "dependencies": {
+    "apicache": "0.0.12",
     "async": "latest",
     "body-parser": "^1.14.1",
     "bower": "latest",
@@ -39,7 +41,6 @@
     "lodash": "latest",
     "method-override": "^2.3.5",
     "morgan": "^1.6.1",
-    "mysql": "^2.9.0",
     "nconf": "^0.8.2",
     "passport": "^0.3.2",
     "passport-facebook": "^2.0.0",
@@ -49,7 +50,9 @@
     "passport-twitter": "^1.0.3",
     "pg": "^4.4.3",
     "pg-hstore": "^2.3.2",
+    "promise": "^7.0.4",
     "proxyquire": "^1.7.3",
+    "request": "^2.67.0",
     "sequelize": "^3.13.0",
     "serve-favicon": "^2.3.0",
     "standard-error": "^1.1.0",
@@ -64,6 +67,7 @@
     "grunt-contrib-watch": "latest",
     "grunt-karma": "~0.6.2",
     "grunt-mocha-test": "latest",
+    "grunt-ng-constant": "^1.1.0",
     "karma": "~0.10.4",
     "karma-chrome-launcher": "~0.1.0",
     "karma-coffee-preprocessor": "~0.1.0",

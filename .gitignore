@@ -41,3 +41,4 @@ osucelebrity.sublime-project
 osucelebrity.sublime-workspace
 .env
 .vagrant/
+public/js/constants.js

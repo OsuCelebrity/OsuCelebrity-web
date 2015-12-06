@@ -11,7 +11,10 @@ module.exports = function(sequelize, DataTypes) {
 	var Vote = sequelize.define('Vote', 
 		{
 			id: {type: DataTypes.INTEGER, field: 'ID', primaryKey: true},
-			referenceIdOid: {type: DataTypes.BIGINT, field: 'REFERENCE_ID_OID'},
+			queueUser: {type: DataTypes.BIGINT, field: 'REFERENCE_ID_OID', references: {
+				model: 'QueuedPlayer',
+				key: 'ID'
+			}},
 			twitchUser: {type: DataTypes.STRING, field: 'TWITCHUSER'},
 			voteTime: {type: DataTypes.BIGINT, field: 'VOTETIME'},
 			voteType: {type: DataTypes.STRING, field: 'VOTETYPE'}
@@ -19,13 +22,18 @@ module.exports = function(sequelize, DataTypes) {
 		{
 			freezeTableName: true,
 			tableName: 'VOTE',
+			timestamps: false,
 			instanceMethods: {
 				toJSON: function () {
-					return this.get();
+					var vote = this.get();
+					delete vote.id;
+					return vote;
 				}
 			},
-			associate: function(models) {
-				Vote.belongsTo(models.QueuedPlayer, {as: 'QueuedPlayer', foreignKey: 'VOTE_FK1', targetKey: 'id'});
+			classMethods: {
+				associate: function(models) {
+					
+				}
 			}
 		}
 	);

@@ -23,6 +23,7 @@ module.exports = function(sequelize, DataTypes) {
 		{
 			freezeTableName: true,
 			tableName: 'APIUSER',
+			timestamps: false,
 			instanceMethods: {
 				toJSON: function () {
 					return this.get();

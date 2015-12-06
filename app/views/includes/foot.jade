@@ -2,25 +2,31 @@
 script(type='text/javascript', src='/lib/angular/angular.js')
 script(type='text/javascript', src='/lib/angular-cookies/angular-cookies.js')
 script(type='text/javascript', src='/lib/angular-resource/angular-resource.js')
-script(type='text/javascript', src='/lib/angular-route/angular-route.js')
+script(type='text/javascript', src='/lib/angular-ui-router/release/angular-ui-router.min.js')
 
 //Angular UI
 script(type='text/javascript', src='/lib/angular-bootstrap/ui-bootstrap.js')
 script(type='text/javascript', src='/lib/angular-bootstrap/ui-bootstrap-tpls.js')
-script(type='text/javascript', src='/lib/angular-ui-utils/modules/route/route.js')
+
+//Angular Dependencies
+script(type='text/javascript', src='/lib/lodash/lodash.min.js')
 
 //Application Init
 script(type='text/javascript', src='/js/app.js')
 script(type='text/javascript', src='/js/config.js')
+script(type='text/javascript', src='/js/constants.js')
 script(type='text/javascript', src='/js/directives.js')
 script(type='text/javascript', src='/js/filters.js')
 
 //Application Services
 script(type='text/javascript', src='/js/services/global.js')
-script(type='text/javascript', src='/js/services/articles.js')
+script(type='text/javascript', src='/js/services/current.js')
+script(type='text/javascript', src='/js/services/lodash.js')
 
 //Application Controllers
-script(type='text/javascript', src='/js/controllers/articles.js')
+script(type='text/javascript', src='/js/controllers/votes.js')
+script(type='text/javascript', src='/js/controllers/queue.js')
+script(type='text/javascript', src='/js/controllers/current.js')
 script(type='text/javascript', src='/js/controllers/index.js')
 script(type='text/javascript', src='/js/controllers/header.js')
 script(type='text/javascript', src='/js/init.js')

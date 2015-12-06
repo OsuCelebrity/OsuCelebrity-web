@@ -1,14 +1,76 @@
-<section data-ng-controller="ArticlesController" data-ng-init="findOne()">
-    <span>{{article.updatedAt | date:'medium'}}</span>/
-    <span>{{article.user.name}}</span>
-    <h2>{{article.title}}</h2>
-    <div data-ng-show="global.user.id == article.user.id">
-        <a class="btn" href="/#!/articles/{{article.id}}/edit">
-        	<i class="icon-edit"></i>
-        </a> 
-        <a class="btn" data-ng-click="remove();">
-            <i class="icon-trash"></i>
-        </a>
+<section ng-controller="CurrentController">
+<div ng-show="current.name">
+    <h2>Current Player: {{current.name}}</h2>
+    <div class="progress progress-striped active">
+      <div class="bar" style="width: {{current.health*100|number:2}}%;"></div>
     </div>
-    <div>{{article.content}}</div>
+    <div class="row-fluid">
+        <div class="span4">
+            <h3>Beatmap</h3>
+            {{current.beatmap}}
+
+            <ul>
+                <li>Playing for: {{current.playingFor}}</li>
+            </ul>
+        </div>
+        <div class="span4">
+            <h3>Player Stats</h3>
+            <ul>
+            <li>Level: {{current.level | number:0}}</li>
+            <li>pp: {{current.pp}}</li>
+            <li>Accuracy: {{current.accuracy | number:2}}%</li>
+            </ul>
+        </div>
+        <div class="span4">
+            <h3>Queue</h3>
+            {{current.queueSize}} in queue<br/>
+            Next: {{current.nextPlayer}}
+        </div>
+    </div>
+</div>
+<div ng-show="!current.name">
+    Currently not spectating
+</div>
+</section>
+
+<section>
+    <div class="row-fluid">
+        <div class="span6" ng-controller="VotesController">
+            <div class="row-fluid">
+                <div class="span6">
+                    <h3>Danks ({{votes.up.length}})</h3>
+                    <ol>
+                        <li ng-repeat="vote in votes.up | orderBy:'-voteTime'">{{vote.twitchUser}}</li>
+                    </ol>
+                </div>
+                <div class="span6">
+                    <h3>Skips ({{votes.down.length}})</h3>
+                    <ol>
+                        <li ng-repeat="vote in votes.down | orderBy:'-voteTime'">{{vote.twitchUser}}</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="span6" ng-controller="QueueController">
+            <div class="row-fluid">
+                <div class="span12">
+                    <h3>Current Queue ({{queue.length}})</h3>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>User</th>
+                            <th>Queued</th>
+                            <th>Votes</th>
+                        </tr>
+                        <tr ng-repeat="player in queue | limitTo:5">
+                            <td>{{$index + 1}}. </td>
+                            <td>{{player.name}}</td>
+                            <td>{{player.timeInQueue}}</td>
+                            <td>{{player.votes}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

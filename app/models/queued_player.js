@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
 	var QueuedPlayer = sequelize.define('QueuedPlayer', 
 		{
 			id: {type: DataTypes.BIGINT, field: 'ID', primaryKey: true},
-			playerUserIdOid: {type: DataTypes.INTEGER, field: 'PLAYER_USERID_OID', allowNull: true},
+			osuUser: {type: DataTypes.INTEGER, field: 'PLAYER_USERID_OID', allowNull: true},
 			queueSource: {type: DataTypes.STRING, field: 'QUEUESOURCE'},
 			queueDate: {type: DataTypes.BIGINT, field: 'QUEUEDAT'},
 			startDate: {type: DataTypes.BIGINT, field: 'STARTEDAT'},
@@ -23,13 +23,29 @@ module.exports = function(sequelize, DataTypes) {
 		{
 			freezeTableName: true,
 			tableName: 'QUEUEDPLAYER',
+			timestamps: false,
 			instanceMethods: {
 				toJSON: function () {
 					return this.get();
+				},
+				getVotes: function(db) {
+					return db.Vote.findAll({where:{queueUser: this.id}});
 				}
 			},
-			associate: function(models) {
-				
+			classMethods: {
+				getCurrentPlayer: function() {
+					return QueuedPlayer.scope('current').findOne();
+				},
+				associate: function(models) {
+					
+				}
+			},
+			scopes: {
+				cancelled: { where: { state: -2 } },
+				done: { where: { state: -1 } },
+				current: { where: { state: 0 } },
+				next: { where: { state: 1 } },
+				queued: { where: { state: 2 } },
 			}
 		}
 	);

@@ -8,8 +8,7 @@
             // Load the controllers module
             beforeEach(module('osucelebrity'));
 
-            var scope,
-                HeaderController;
+            var scope, HeaderController;
 
             beforeEach(inject(function($controller, $rootScope) {
                 scope = $rootScope.$new();
@@ -20,9 +19,7 @@
             }));
 
             it('should expose some global scope', function() {
-
                 expect(scope.global).toBeTruthy();
-
             });
 
         });

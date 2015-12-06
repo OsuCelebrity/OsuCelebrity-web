@@ -16,6 +16,7 @@ var path = require('path');
 var sessionMiddleware = require('./middlewares/session');
 var config = require('./config');
 var winston = require('./winston');
+var apicache = require('apicache');
 
 module.exports = function(app, passport, sequelize) {
 
@@ -71,20 +72,22 @@ module.exports = function(app, passport, sequelize) {
     app.use(passport.initialize());
     app.use(passport.session());
 
+    var cache = apicache.options({ debug: config.NODE_ENV !== 'production', 
+        enabled: config.NODE_ENV !== 'development' }).middleware;
+    var router = express.Router();
+    config.getGlobbedFiles('./app/api_routes/**/*.js').forEach(function(routePath) {
+      require(path.resolve(routePath))(app, router, cache);
+    });
+    app.use('/api', router);
+
     // Globbing routing files
     config.getGlobbedFiles('./app/routes/**/*.js').forEach(function(routePath) {
       require(path.resolve(routePath))(app);
     });
 
-    app.use('*',function(req, res){
-        res.status(404).render('404', {
-            url: req.originalUrl,
-            error: 'Not found'
-        });
-    });
+    app.get('*', require('../app/controllers/index').render);
 
     app.use(function(err, req, res, next) {
-
         //Log it
         winston.error(err);
 

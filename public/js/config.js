@@ -1,33 +1,37 @@
 'use strict';
 
 //Setting up route
-angular.module('osucelebrity').config(['$routeProvider',
-    function($routeProvider) {
-        $routeProvider.
-        when('/articles', {
-            templateUrl: 'views/articles/list.html'
-        }).
-        when('/articles/create', {
-            templateUrl: 'views/articles/create.html'
-        }).
-        when('/articles/:articleId/edit', {
-            templateUrl: 'views/articles/edit.html'
-        }).
-        when('/articles/:articleId', {
-            templateUrl: 'views/articles/view.html'
-        }).
-        when('/', {
-            templateUrl: 'views/index.html'
-        }).
-        otherwise({
-            redirectTo: '/'
-        });
+angular.module('osucelebrity').config(
+    function($stateProvider, $urlRouterProvider) {
+        //$urlRouterProvider.otherwise("/");
+        
+        $stateProvider
+            .state('index', {
+                url: "/",
+                templateUrl: "views/index.html",
+                controller: "IndexController"
+            })
+            .state('login', {
+                controller: function($window) {
+                    $window.open('/auth/twitch', '_self');
+                }
+            })
+            .state('signout', {
+                controller: function($window) {
+                    $window.open('/signout', '_self');
+                }
+            })
+            .state('votes', {
+                url: "/votes",
+                templateUrl: "views/articles/view.html"
+            });
     }
-]);
-
-//Setting HTML5 Location Mode
-angular.module('osucelebrity').config(['$locationProvider',
+)
+.config(['$locationProvider',
     function($locationProvider) {
-        $locationProvider.hashPrefix("!");
+        $locationProvider.html5Mode({
+            enabled:true,
+            requireBase: false
+        });
     }
 ]);

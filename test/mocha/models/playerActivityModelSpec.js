@@ -45,11 +45,11 @@ describe('PlayerActivity model', function() {
     });
 
     describe('data', function() {
-        it('should have userGameModeOid', function() {
-            activityModel.fields.userGameModeOid.type.should.exist.and.equal('integer');
+        it('should have gameMode', function() {
+            activityModel.fields.gameMode.type.should.exist.and.equal('integer');
         });
-        it('should have userUserIdOid', function() {
-            activityModel.fields.userUserIdOid.type.should.exist.and.equal('integer');
+        it('should have queueUser', function() {
+            activityModel.fields.queueUser.type.should.exist.and.equal('integer');
         });
         it('should have lastActivity', function() {
             activityModel.fields.lastActivity.type.should.exist.and.equal('bigint');

@@ -52,8 +52,8 @@ describe('OsuIrcUser model', function() {
         it('should have resolved', function() {
             osuIrcUser.fields.resolved.type.should.exist.and.equal('bigint');
         });
-        it('should have userUserIdOid', function() {
-            osuIrcUser.fields.userUserIdOid.type.should.exist.and.equal('integer');
+        it('should have osuUser', function() {
+            osuIrcUser.fields.osuUser.type.should.exist.and.equal('integer');
         });
     });
 

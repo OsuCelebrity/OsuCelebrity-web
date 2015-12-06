@@ -12,11 +12,12 @@ module.exports = function(sequelize, DataTypes) {
 		{
 			ircName: {type: DataTypes.STRING, field: "IRCNAME", primaryKey: true},
 			resolved: {type: DataTypes.BIGINT, field: "RESOLVED"},
-			userUserIdOid: {type: DataTypes.INTEGER, field: "USER_USERID_OID"}
+			osuUser: {type: DataTypes.INTEGER, field: "USER_USERID_OID"}
 		},
 		{
 			freezeTableName: true,
 			tableName: 'OSUIRCUSER',
+			timestamps: false,
 			instanceMethods: {
 				toJSON: function () {
 					return this.get();

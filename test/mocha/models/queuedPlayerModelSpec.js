@@ -49,8 +49,8 @@ describe('QueuedPlayer model', function() {
             queuedPlayerModel.fields.id.type.should.exist.and.equal('bigint');
             queuedPlayerModel.fields.id.primaryKey.should.exist.and.equal(true);
         });
-        it('should have playerUserIdOid', function() {
-            queuedPlayerModel.fields.playerUserIdOid.type.should.exist.and.equal('integer');
+        it('should have osuUser', function() {
+            queuedPlayerModel.fields.osuUser.type.should.exist.and.equal('integer');
         });
         it('should have queueSource', function() {
             queuedPlayerModel.fields.queueSource.type.should.exist.and.equal('string');

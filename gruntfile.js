@@ -45,7 +45,7 @@ module.exports = function(grunt) {
                     args: ['--color'],
                     ignore: ['README.md', 'node_modules/**', '.DS_Store'],
                     ext: 'js',
-                    watch: ['app', 'config', 'app.js', 'gruntfile.js'],
+                    watch: ['app', 'config', 'app.js', 'gruntfile.js', 'app/**/*.js'],
                     delay: 1000,
                     env: {
                         PORT: 3000
@@ -58,6 +58,30 @@ module.exports = function(grunt) {
             tasks: ['nodemon', 'watch'],
             options: {
                 logConcurrentOutput: true
+            }
+        },
+        ngconstant: {
+            options: {
+                name: 'osucelebrity.config',
+                dest: 'public/js/constants.js',
+            },
+            development: {
+                constants: {
+                    intervals: {
+                        player: 1500,
+                        vote: 1500,
+                        queue: 1500
+                    }
+                }
+            },
+            production: {
+                constants: {
+                    intervals: {
+                        player: 1000,
+                        vote: 1000,
+                        queue: 1000
+                    }
+                }
             }
         },
         mochaTest: {
@@ -84,6 +108,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-nodemon');
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-ng-constant');
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-copy');
@@ -91,8 +116,11 @@ module.exports = function(grunt) {
     grunt.option('force', false);
 
     //Default task(s).
-    grunt.registerTask('default', ['jshint', 'concurrent']);
+    grunt.registerTask('default', ['ngconstant:development', 'jshint', 'concurrent']);
+
+    //Build task(s).
+    grunt.registerTask('build', ['ngconstant:production']);
 
     //Test task.
-    grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
+    grunt.registerTask('test', ['ngconstant:production', 'env:test', 'mochaTest', 'karma:unit']);
 };

@@ -49,8 +49,8 @@ describe('Vote model', function() {
             voteModel.fields.id.type.should.exist.and.equal('integer');
             voteModel.fields.id.primaryKey.should.exist.and.equal(true);
         });
-        it('should have referenceIdOid', function() {
-            voteModel.fields.referenceIdOid.type.should.exist.and.equal('bigint');
+        it('should have queueUser', function() {
+            voteModel.fields.queueUser.type.should.exist.and.equal('bigint');
         });
         it('should have twitchUser', function() {
             voteModel.fields.twitchUser.type.should.exist.and.equal('string');
