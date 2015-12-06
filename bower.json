@@ -11,6 +11,8 @@
     "angular-bootstrap": "0.7.0",
     "angular-ui-utils": "0.0.4",
     "angular-ui-router": "~0.2.15",
-    "lodash": "~3.10.1"
+    "lodash": "~3.10.1",
+    "angular-socket-io": "~0.7.0",
+    "socket.io-client": "~1.3.7"
   }
 }

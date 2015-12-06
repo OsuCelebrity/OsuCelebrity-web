@@ -1,18 +1,14 @@
 'use strict';
 
 angular.module('osucelebrity.current').controller('QueueController', 
-    ['_', '$scope', '$interval', 'intervals', 'Current', 
-    function (_, $scope, $interval, intervals, Current) {
-    var loadQueue = function() {
-        Current.queue.query({}, function(queue) {
-            $scope.queue = queue;
-        });
-    };
+    ['$scope', 'CurrentSocket', 
+    function ($scope, socket) {
     
-    var queueTimer = $interval(loadQueue, intervals.queue);
-    loadQueue();
+    socket.on('queue', function (data) {
+      $scope.queue = data;
+    });
 
-    $scope.$on("$destroy",function(event) {
-      $interval.cancel(queueTimer);
+    socket.on('connect', function() {
+        
     });
 }]);

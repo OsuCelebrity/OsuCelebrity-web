@@ -11,6 +11,9 @@ var config = require('../../config/config');
 var db = require('../../config/sequelize');
 var winston = require('../../config/winston');
 
+var NodeCache = require('node-cache');
+var cache = new NodeCache({ stdTTL: config.socketInterval/1000 });
+
 var getCelebrityApi = function(path) {
   var options = {
     url: config.osucelebrity.apiUrl + path,
@@ -106,28 +109,40 @@ var getCurrentVotes = function() {
 };
 
 /**
+ * Gets a cached value, otherwise caches a new value and returns
+ */
+var getCachedValue = function(valueName, func) {
+  return new promise(function(resolve, reject) {
+    var value = cache.get(valueName);
+
+    if(value === undefined){
+      func().then(function(obj) {
+        cache.set(valueName, obj);
+        resolve(obj);
+      });
+    } else {
+      resolve(value);
+    }
+  });
+};
+
+/**
  * Gets the information about the current spectatee's votes
  */
-exports.votes = function(req, res, next) {
-  getCurrentVotes().then(function(current) {
-    res.jsonp(current);
-  });
+exports.votes = function() {
+  return getCachedValue('votes', getCurrentVotes);
 };
 
 /**
  * Gets the information about the current spectatee and the queue
  */
-exports.current = function(req, res, next) {
-  getCurrentInfo().then(function(current) {
-    res.jsonp(current);
-  });
+exports.current = function() {
+  return getCachedValue('current', getCurrentInfo);
 };
 
 /**
  * Gets the information about the current queue
  */
-exports.queue = function(req, res, next) {
-  getCurrentQueue().then(function(current) {
-    res.jsonp(current);
-  });
+exports.queue = function() {
+  return getCachedValue('queue', getCurrentQueue);
 };

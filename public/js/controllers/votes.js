@@ -1,21 +1,17 @@
 'use strict';
 
-angular.module('osucelebrity.current').controller('VotesController', 
-    ['_', '$scope', '$interval', 'intervals', 'Current', 
-    function (_, $scope, $interval, intervals, Current) {
-    var loadVotes = function() {
-        Current.votes.query({}, function(votes) {
-            $scope.votes = {
-                up: _.filter(votes, {voteType: 'UP'}),
-                down: _.filter(votes, {voteType: 'DOWN'})
-            };
-        });
-    };
-    
-    var voteTimer = $interval(loadVotes, intervals.vote);
-    loadVotes();
+            
+angular.module('osucelebrity.current').controller('VotesController', ['_', '$scope', 'CurrentSocket', 
+    function (_, $scope, socket) {
 
-    $scope.$on("$destroy",function(event) {
-      $interval.cancel(voteTimer);
+    socket.on('votes', function (data) {
+      $scope.votes = {
+          up: _.filter(data, {voteType: 'UP'}),
+          down: _.filter(data, {voteType: 'DOWN'})
+      };
+    });
+
+    socket.on('connect', function() {
+        
     });
 }]);

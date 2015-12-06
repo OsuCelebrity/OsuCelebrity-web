@@ -12,7 +12,7 @@ module.exports = function(grunt) {
                 },
             },
             js: {
-                files: ['public/js/**', 'app/**/*.js', 'config/**/*.js'],
+                files: ['app/**/*.js', 'config/**/*.js'],
                 tasks: ['jshint'],
                 options: {
                     livereload: true,
@@ -67,20 +67,12 @@ module.exports = function(grunt) {
             },
             development: {
                 constants: {
-                    intervals: {
-                        player: 1500,
-                        vote: 1500,
-                        queue: 1500
-                    }
+                    
                 }
             },
             production: {
                 constants: {
-                    intervals: {
-                        player: 1000,
-                        vote: 1000,
-                        queue: 1000
-                    }
+                    
                 }
             }
         },

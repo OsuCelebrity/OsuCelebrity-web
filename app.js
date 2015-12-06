@@ -23,11 +23,15 @@ var passport        = require('./config/passport');
 
 var app = express();
 
+var server          = require('http').Server(app);
+var io              = require('socket.io')(server);
+
 //Initialize Express
 require('./config/express')(app, passport, db.sequelize);
+require('./config/io')(io);
 
 //Start the app by listening on <port>
-app.listen(config.PORT);
+server.listen(config.PORT);
 winston.info('Express app started on port ' + config.PORT);
 
 //expose app

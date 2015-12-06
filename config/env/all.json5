@@ -1,6 +1,7 @@
 {
-	PORT: 3000, // capital PORT allows auto override by common env variable if it exists
-	FORCE_DB_SYNC: "false", // must be string to allow environment variable override
-  enableSequelizeLog: "false", // type chosen as string for no particular reason
-   expressSessionSecret: '$uper$ecret$e$$ionKey' // replace with your own in production
+	PORT: 3000,
+	FORCE_DB_SYNC: "false",
+  enableSequelizeLog: "false",
+  expressSessionSecret: '$uper$ecret$e$$ionKey',
+  socketInterval: 1000
 }

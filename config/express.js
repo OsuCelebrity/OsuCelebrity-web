@@ -72,14 +72,6 @@ module.exports = function(app, passport, sequelize) {
     app.use(passport.initialize());
     app.use(passport.session());
 
-    var cache = apicache.options({ debug: config.NODE_ENV !== 'production', 
-        enabled: config.NODE_ENV !== 'development' }).middleware;
-    var router = express.Router();
-    config.getGlobbedFiles('./app/api_routes/**/*.js').forEach(function(routePath) {
-      require(path.resolve(routePath))(app, router, cache);
-    });
-    app.use('/api', router);
-
     // Globbing routing files
     config.getGlobbedFiles('./app/routes/**/*.js').forEach(function(routePath) {
       require(path.resolve(routePath))(app);

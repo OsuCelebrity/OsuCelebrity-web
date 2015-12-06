@@ -1,18 +1,14 @@
 'use strict';
 
-angular.module('osucelebrity.current').controller('CurrentController', 
-    ['$scope', '$interval', 'intervals', 'Current',
-    function ($scope, $interval, intervals, Current) {
-    var loadCurrent = function() {
-        Current.player.get({}, function(player) {
-            $scope.current = player;
-        });
-    };
-    
-    var currentTimer = $interval(loadCurrent, intervals.player);
-    loadCurrent();
+angular.module('osucelebrity.current').controller('CurrentController', ['_', '$scope', 'CurrentSocket', 
+    function (_, $scope, socket) {
 
-    $scope.$on("$destroy",function(event) {
-      $interval.cancel(currentTimer);
+    socket.on('current', function (data) {
+      console.log(data);
+      $scope.current = data;
+    });
+
+    socket.on('connect', function() {
+        
     });
 }]);
