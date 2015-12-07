@@ -21,9 +21,9 @@ angular.module('osucelebrity').config(
                     $window.open('/signout', '_self');
                 }
             })
-            .state('votes', {
-                url: "/votes",
-                templateUrl: "views/articles/view.html"
+            .state('current', {
+                url: "/current",
+                templateUrl: "views/current.html"
             });
     }
 )

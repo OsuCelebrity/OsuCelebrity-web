@@ -13,8 +13,7 @@
                 scope = $rootScope.$new();
 
                 VoteController = $controller('VoteController', {
-                    $scope: scope,
-                    intervals: { vote: 500 }
+                    $scope: scope
                 });
             }));
         });
