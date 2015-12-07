@@ -10,7 +10,6 @@
         callbackURL: "http://localhost:3000/auth/twitch/callback"
     },
     osucelebrity: {
-        useApi: false,
         apiUrl: "http://1d593b41.ngrok.io"
     }
 }

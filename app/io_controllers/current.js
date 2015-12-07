@@ -30,9 +30,8 @@ var getCelebrityApi = function(path) {
   });
 };
 
-var getCurrentInfo = function() {
-  //Only load the data if using production
-  if(config.osucelebrity.useApi === false) {
+var getCurrentInfo = function(spoof) {
+  if(spoof) {
     return new promise(function(resolve, reject) {
       resolve({
         accuracy: 99.26639556884766,
@@ -56,8 +55,8 @@ var getCurrentInfo = function() {
   return getCelebrityApi('/current');
 };
 
-var getCurrentQueue = function() {
-  if(config.osucelebrity.useApi === false) {
+var getCurrentQueue = function(spoof) {
+  if(spoof) {
     return new promise(function(resolve, reject) {
       resolve([
         {
@@ -77,8 +76,8 @@ var getCurrentQueue = function() {
   return getCelebrityApi('/queue');
 };
 
-var getCurrentVotes = function() {
-  if(config.osucelebrity.useApi === false) {
+var getCurrentVotes = function(spoof) {
+  if(spoof) {
     return new promise(function(resolve, reject) {
       resolve([
         {
@@ -115,12 +114,16 @@ var getCurrentVotes = function() {
 /**
  * Gets a cached value, otherwise caches a new value and returns
  */
-var getCachedValue = function(valueName, func) {
+var getCachedValue = function(valueName, func, spoof) {
+  if(spoof) {
+    valueName = 'spoof:' + valueName;
+  }
+
   return new promise(function(resolve, reject) {
     var value = cache.get(valueName);
 
     if(value === undefined){
-      func().then(function(obj) {
+      func(spoof).then(function(obj) {
         cache.set(valueName, obj);
         resolve(obj);
       });
@@ -133,20 +136,20 @@ var getCachedValue = function(valueName, func) {
 /**
  * Gets the information about the current spectatee's votes
  */
-exports.votes = function() {
-  return getCachedValue('votes', getCurrentVotes);
+exports.votes = function(spoof) {
+  return getCachedValue('votes', getCurrentVotes, spoof);
 };
 
 /**
  * Gets the information about the current spectatee and the queue
  */
-exports.current = function() {
-  return getCachedValue('current', getCurrentInfo);
+exports.current = function(spoof) {
+  return getCachedValue('current', getCurrentInfo, spoof);
 };
 
 /**
  * Gets the information about the current queue
  */
-exports.queue = function() {
-  return getCachedValue('queue', getCurrentQueue);
+exports.queue = function(spoof) {
+  return getCachedValue('queue', getCurrentQueue, spoof);
 };

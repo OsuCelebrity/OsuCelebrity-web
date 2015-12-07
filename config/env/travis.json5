@@ -1,12 +1,6 @@
 {
     PORT: 3001,
-    db: {
-        name: "osucelebrity",
-        password: "",
-        username: "postgres",
-        host: "localhost",
-        port: 5432
-    },
+    db: "mongodb://localhost:27017/osucelebrity",
     app: {
         name: "OsuCelebrity-web Travis"
     },

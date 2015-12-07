@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('osucelebrity.current').controller('CurrentController', ['_', '$scope', 'CurrentSocket', 
-    function (_, $scope, socket) {
+angular.module('osucelebrity.current').controller('CurrentController', ['_', '$scope', 'CurrentSocket', 'Debug',
+    function (_, $scope, socket, Debug) {
 
     socket.on('current', function (data) {
       $scope.current = data;
@@ -13,5 +13,9 @@ angular.module('osucelebrity.current').controller('CurrentController', ['_', '$s
 
     socket.on('disconnect', function() {
       $scope.current = null;
+    });
+
+    $scope.$on('spoof', function(event, args) {
+      socket.emit('spoof');
     });
 }]);
