@@ -18,7 +18,7 @@ var winston         = require('./config/winston');
 winston.info('Starting '+config.app.name+'...');
 winston.info('Config loaded: '+config.NODE_ENV);
 
-var db              = require('./config/sequelize');
+var mongoose        = require('./config/mongoose');
 var passport        = require('./config/passport');
 
 var app = express();
@@ -27,7 +27,7 @@ var server          = require('http').Server(app);
 var io              = require('socket.io')(server);
 
 //Initialize Express
-require('./config/express')(app, passport, db.sequelize);
+require('./config/express')(app, passport, mongoose);
 require('./config/io')(io);
 
 //Start the app by listening on <port>

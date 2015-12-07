@@ -18,7 +18,7 @@ var config = require('./config');
 var winston = require('./winston');
 var apicache = require('apicache');
 
-module.exports = function(app, passport, sequelize) {
+module.exports = function(app, passport, mongoose) {
 
     winston.info('Initializing Express');
 
@@ -60,7 +60,7 @@ module.exports = function(app, passport, sequelize) {
     app.use(methodOverride());
 
     //express session configuration
-    app.use(sessionMiddleware(sequelize));
+    app.use(sessionMiddleware(mongoose));
 
     //connect flash for flash messages
     app.use(flash());

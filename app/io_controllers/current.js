@@ -3,12 +3,10 @@
 /**
  * Module dependencies.
  */
-var _ = require('lodash');
 var request = require('request');
 var promise = require('promise');
 
 var config = require('../../config/config');
-var db = require('../../config/sequelize');
 var winston = require('../../config/winston');
 
 var NodeCache = require('node-cache');

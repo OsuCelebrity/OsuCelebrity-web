@@ -1,25 +1,12 @@
-<div class="navbar-inner" ng-controller="HeaderController">
-    <ul class="nav">
-        <li>
-            <a class="brand" ui-sref="index">OsuCelebrity</a>
-        </li>
-        <li ng-repeat="item in menu" ng-show="global.user" ui-sref="{{item.link}}" ui-sref-active="active">
-            <a href="#!/{{item.link}}">{{item.title}}</a>
-        </li>
+<div class="nav-wrapper" ng-controller="HeaderController">
+    <a href="#" class="brand-logo center">OsuCelebrity</a>
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><a ui-sref="votes">Current</a></li>
     </ul>
-    <ul class="nav pull-right" ng-hide="global.authenticated">
-        <li><a ui-sref="login" href="#">Login with Twitch</a>
-        </li>
-    </ul>
-    <ul class="nav pull-right" ng-show="global.authenticated">
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" toggle="dropdown">
-				{{global.user.name}} <b class="caret"></b>
-			</a>
-            <ul class="dropdown-menu">
-                <li><a ui-sref="signout" href="#">Signout</a>
-                </li>
-            </ul>
-        </li>
+
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li ng-if="!global.authenticated"><a ui-sref="login" href="#">Login with Twitch</a></li>
+        <li ng-if="global.authenticated"><a href="#">{{global.user.name}}</a></li>
+        <li ng-if="global.authenticated"><a ui-sref="signout" href="#">Signout</a></li>
     </ul>
 </div>

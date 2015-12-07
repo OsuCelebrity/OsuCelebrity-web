@@ -1,12 +1,6 @@
 {
     // This is your PostgreSQL Database configuration
-    db: {
-        name: "osucelebrity",
-        password: "vagrant",
-        username: "vagrant",
-        host: "localhost",
-        port: 5432
-    },
+    db: "mongodb://localhost:27017/osucelebrity",
     app: {
         name: "OsuCelebrity-web"
     },

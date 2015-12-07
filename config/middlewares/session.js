@@ -2,18 +2,15 @@
 
 var session = require('express-session'),
     config = require('./../config'),
-    SequelizeStore = require('connect-session-sequelize')(session.Store);
+    MongoStore = require('connect-mongo')(session);
 
-module.exports = function(sequelize) {
+module.exports = function(mongoose) {
   var sessionMiddleware = session({
     resave: true,
     saveUninitialized: true,
-    store: new SequelizeStore({
-      db: sequelize,
-      table: 'Session'
-    }),
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
     cookie:{maxAge:1000*3600*24*7}, //remember for 7 days
-    secret: config.expressSessionSecret/*||'$uper$ecret$e$$ionKey'*/
+    secret: config.expressSessionSecret
   });
 
   return sessionMiddleware;
