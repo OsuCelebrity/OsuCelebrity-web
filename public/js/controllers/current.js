@@ -4,11 +4,14 @@ angular.module('osucelebrity.current').controller('CurrentController', ['_', '$s
     function (_, $scope, socket) {
 
     socket.on('current', function (data) {
-      console.log(data);
       $scope.current = data;
     });
 
     socket.on('connect', function() {
-        
+      console.log('Connected to OsuCelebrity');
+    });
+
+    socket.on('disconnect', function() {
+      $scope.current = null;
     });
 }]);

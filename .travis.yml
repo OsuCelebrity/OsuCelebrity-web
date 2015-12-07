@@ -4,10 +4,7 @@ node_js:
 env:
 - NODE_ENV=travis
 before_script:
-- psql -c 'create database osucelebrity;' -U postgres
 - npm test
-services:
-- postgresql
 notifications:
   slack:
     secure: JdKtqrrMedOcSd8Be8lYHN7zTy9IAOW5f52XIEHzkTSH93HGYD5Qn+IhkcOqqVi0EXqsS8aYYR8FapTBi5tCkY1s7A5Of7Thiy5iNF0opGrAcr2uZ1alFFCU+5n+yb95Gqi3oqOflTQvVYpjMh2gxP764VISY9wBEkHjWMh4ffczMdjllgC51dNto7k1oWKxj8/5SD3+T0x/my1x5EmImOj8+hRkLPk1CdzBhb/O91be8J7iKxp9QNvS2El/TB/jRsVx0HpRhuyZZTkiZCvcsyl+b8ouf8EnquAH7IXuLP3tvshPfooxAo9hNJnHIjjdItcmfn+77kZqvtG5kqCorMpfCrUfFqHhE4WDbd2pqNNU6NGk/s9bk6xssnsvT/VCcYOX2+2sLs4afj3nFTySM1q5FR5cmIOQoaAtPlFNs/GxDu6Xdx4/E3cVRrKI+uqR9y9BVq4QrMkyTQrHTV2ZdtYuZDJsEIyo31lxV1MfCd4YAAMYkOvRlBkaEgEchwT1/0i68v7398i0g/a6T/9qurW6xb3acp/Nc68sXd3HA96gO6j+o5S7GReDxStenGxG/+jaoZvrKSBNYJuLspM2tmFWi+OE9r9QHbkK8DMqEh/NnPw2nNkJfsUVfMgpt92c/uXH8kf/dmvvYvFV3SbWTr85pVpo+M114IJjLN0bXjo=

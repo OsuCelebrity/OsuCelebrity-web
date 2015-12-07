@@ -35,22 +35,24 @@ var getCelebrityApi = function(path) {
 var getCurrentInfo = function() {
   //Only load the data if using production
   if(config.osucelebrity.useApi === false) {
-    return {
-      accuracy: 99.26639556884766,
-      beatmap: "SMiLE.dk - Golden Sky [Insane]",
-      country: "RO",
-      gameMode: 0,
-      health: 0,
-      id: 3219026,
-      level: 100.792,
-      name: "Rohulk",
-      playCount: 18020,
-      playingFor: "0:53",
-      pp: 8020.01,
-      queueSize: 0,
-      rank: 73,
-      source: "queue"
-    };
+    return new promise(function(resolve, reject) {
+      resolve({
+        accuracy: 99.26639556884766,
+        beatmap: "SMiLE.dk - Golden Sky [Insane]",
+        country: "RO",
+        gameMode: 0,
+        health: 0.7,
+        id: 3219026,
+        level: 100.792,
+        name: "Rohulk",
+        playCount: 18020,
+        playingFor: "0:53",
+        pp: 8020.01,
+        queueSize: 2,
+        rank: 73,
+        source: "queue"
+      });
+    });
   }
 
   return getCelebrityApi('/current');
@@ -58,18 +60,20 @@ var getCurrentInfo = function() {
 
 var getCurrentQueue = function() {
   if(config.osucelebrity.useApi === false) {
-    return [
-      {
-        name: "Mercurius",
-        timeInQueue: "0:26",
-        votes: "1"
-      },
-      {
-        name: "Cerkie",
-        timeInQueue: "0:02",
-        votes: "1"
-      }
-    ];
+    return new promise(function(resolve, reject) {
+      resolve([
+        {
+          name: "Mercurius",
+          timeInQueue: "0:26",
+          votes: "1"
+        },
+        {
+          name: "Cerkie",
+          timeInQueue: "0:02",
+          votes: "1"
+        }
+      ]);
+    });
   }
 
   return getCelebrityApi('/queue');
@@ -77,32 +81,34 @@ var getCurrentQueue = function() {
 
 var getCurrentVotes = function() {
   if(config.osucelebrity.useApi === false) {
-    return [
-      {
-        queueUser: "5863",
-        twitchUser: "redbackthomson",
-        voteTime: "1448767421000",
-        voteType: "UP"
-      },
-      {
-        queueUser: "5863",
-        twitchUser: "karlchance17",
-        voteTime: "1448767411576",
-        voteType: "DOWN"
-      },
-      {
-        queueUser: "5863",
-        twitchUser: "grumd",
-        voteTime: "1448767401207",
-        voteType: "DOWN"
-      },
-      {
-        queueUser: "5863",
-        twitchUser: "umi_sama",
-        voteTime: "1448767391509",
-        voteType: "DOWN"
-      }
-    ];
+    return new promise(function(resolve, reject) {
+      resolve([
+        {
+          queueUser: "5863",
+          twitchUser: "redbackthomson",
+          voteTime: "1448767421000",
+          voteType: "UP"
+        },
+        {
+          queueUser: "5863",
+          twitchUser: "karlchance17",
+          voteTime: "1448767411576",
+          voteType: "DOWN"
+        },
+        {
+          queueUser: "5863",
+          twitchUser: "grumd",
+          voteTime: "1448767401207",
+          voteType: "DOWN"
+        },
+        {
+          queueUser: "5863",
+          twitchUser: "umi_sama",
+          voteTime: "1448767391509",
+          voteType: "DOWN"
+        }
+      ]);
+    });
   }
 
   return getCelebrityApi('/votes');
