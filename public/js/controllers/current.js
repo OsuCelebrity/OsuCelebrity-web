@@ -15,6 +15,7 @@ angular.module('osucelebrity.current').controller('CurrentController', ['_', '$s
       $scope.current = null;
     });
 
+    //Debugging functions
     $scope.$on('spoof', function(event, args) {
       socket.emit('spoof');
     });

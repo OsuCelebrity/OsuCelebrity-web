@@ -1,9 +1,12 @@
 'use strict';
 
-angular.module('osucelebrity.system').factory("Debug", function($rootScope) {
+angular.module('osucelebrity.system').factory("Debug", function(debug, $rootScope) {
   return {
+    isDebugging: debug,
     emit: function(msg, data) {
-      $rootScope.$broadcast(msg, data);
+      if(this.isDebugging) {
+        $rootScope.$broadcast(msg, data);
+      }
     }
-  }
+  };
 });

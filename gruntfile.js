@@ -67,7 +67,7 @@ module.exports = function(grunt) {
             },
             development: {
                 constants: {
-                    
+                    debug: true
                 }
             },
             production: {

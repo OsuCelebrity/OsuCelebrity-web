@@ -24,7 +24,7 @@ module.exports = function(io) {
       }, config.socketInterval);
 
       socket.on('spoof', function() {
-        spoof = true;
+        spoof = !spoof;
       });
 
       socket.on('disconnect', function() {

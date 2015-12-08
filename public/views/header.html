@@ -1,13 +1,19 @@
 <div class="nav-wrapper" ng-controller="HeaderController">
-    <a href="#" class="brand-logo center">OsuCelebrity</a>
+    <a ui-sref="index" class="brand-logo center">OsuCelebrity<span ng-if="debug" style="font-size: 0.3em; color: paleturquoise;">DEBUG</span></a>
     <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a ui-sref="current">Current</a></li>
-        <li><a href="#" ng-click="spoof()">Spoof</a></li>
+        
+        <li ng-if="debug"><a href="#" ng-click="spoof()">Spoof</a></li>
     </ul>
 
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li ng-if="!global.authenticated"><a ui-sref="login" href="#">Login with Twitch</a></li>
-        <li ng-if="global.authenticated"><a href="#">{{global.user.name}}</a></li>
-        <li ng-if="global.authenticated"><a ui-sref="signout" href="#">Signout</a></li>
+        <span ng-if="!global.authenticated">
+          <li ng-if="!global.authenticated"><a ui-sref="login" href="#">Login with Twitch</a></li>
+        </span>
+
+        <span ng-if="global.authenticated">
+          <li><a href="#">{{global.user.name}}</a></li>
+          <li><a ui-sref="signout" href="#">Signout</a></li>
+        </span>
     </ul>
 </div>
