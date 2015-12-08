@@ -52,24 +52,11 @@
         <div class="row">
           <div class="col s12">
             <h5>Current Queue ({{queue.length}})</h5>
-            <table>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>User</th>
-                  <th>Queued</th>
-                  <th>Votes</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat="player in queue | limitTo:5">
-                  <td>{{$index + 1}}. </td>
-                  <td>{{player.name}}</td>
-                  <td>{{player.timeInQueue}}</td>
-                  <td>{{player.votes}}</td>
-                </tr>
-              </tbody>
-            </table>
+            <div ng-repeat="player in queue" class="chip">
+              <img src="https://a.ppy.sh/{{player.userId}}" alt="{{player.name}}">
+              {{player.name}}
+              <small>{{player.timeInQueue}}</small>
+            </div>
           </div>
         </div>
       </div>

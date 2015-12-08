@@ -60,11 +60,13 @@ var getCurrentQueue = function(spoof) {
     return new promise(function(resolve, reject) {
       resolve([
         {
+          userId: 589550,
           name: "Mercurius",
           timeInQueue: "0:26",
           votes: "1"
         },
         {
+          userId: 2533400,
           name: "Cerkie",
           timeInQueue: "0:02",
           votes: "1"
